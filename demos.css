@@ -1,0 +1,155 @@
+@media (prefers-color-scheme: light) {
+:root {
+  --background-colour: #fafafa;
+  --text-colour: #333;
+  --navigation-bar-background: #ffb6c1;
+  --navigation-bar-text: #6a004b;
+  --link-hover: #c2185b;
+  --accent-colour: #ff69b4;
+  --font-main: 'Poppins';
+  --font-alt: 'Georgia', serif;
+  --bullet-point-colour: hotpink;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-colour: #2b2b2b;
+    --text-colour: #f0f0f0;
+    --navigation-bar-background: #880e4f;
+    --navigation-bar-text: #fff;
+    --link-hover: #f06292;
+    --accent-colour: #ff80ab;
+    --bullet-coloru: #ff80ab;
+  }
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-colour);
+  color: var(--text-colour);
+  font-family: var(--font-main);
+  font-size: larger;
+  line-height: 1.6;
+  text-align: center;
+  padding-bottom: 4rem;
+}
+
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: var(--navigation-bar-background);
+  color: var(--navigation-bar-text);
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  color: var(--navigation-bar-text);
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--link-hover);
+  border-bottom: 2px solid var(--accent-colour);
+}
+
+/* Footer */
+footer {
+  background-color: var(--navigation-bar-background);
+  color: var(--navigation-bar-text);
+  padding: 1rem;
+  font-size: large;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-family: var(--font-alt);
+}
+
+th, td {
+  border: 1px solid var(--text-colour);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+th {
+  background-color: var(--accent-colour);
+  color: white;
+}
+
+/* List Styling */
+ul, ol {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+ul li::marker,
+ol li::marker {
+  color: var(--bullet-colour);
+}
+
+ul.centered-list, ol.centered-list {
+  display: inline-block;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+/* Image Styling */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  nav {
+    position: sticky;
+  }
+
+  main {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  body {
+    padding-bottom: 70px;
+  }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fruit</title>
+  <style>
+    :root {
+      --bg-color: #fff;
+      --text-color: #000;
+      --accent: #ffb6c1;
+      --box-bg: #f9f9f9;
+    }
+
+    .dark-mode {
+      --bg-color: #1e1e1e;
+      --text-color: #fff;
+      --accent: #ffa07a;
+      --box-bg: #2a2a2a;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background-color: var(--box-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: var(--accent);
+      color: #000;
+      border: none;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #total {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .toggle-button {
+      background: none;
+      color: var(--text-color);
+      border: 2px solid var(--accent);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Order Fresh Fruit</h1>
+
+    <label for="fruit">What would you like?</label>
+    <select id="fruit">
+      <option value="apple" data-price="0.5">Apple - £0.50</option>
+      <option value="banana" data-price="0.3">Banana - £0.30</option>
+      <option value="orange" data-price="0.4">Orange - £0.40</option>
+      <option value="kiwi" data-price="0.6">Kiwi - £0.60</option>
+    </select>
+
+    <label for="quantity">How many?</label>
+    <input type="number" id="quantity" min="1" value="1">
+
+    <button onclick="calculateTotal()">Show Total</button>
+    <div id="total"></div>
+
+    <h2>Your Delivery Info</h2>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Name">
+
+    <label for="address">Address</label>
+    <input type="text" id="address" placeholder="Address">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="email@example.com">
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="01234 567890">
+
+    <button type="submit">Place Order</button>
+
+    <button type="button" class="toggle-button" onclick="toggleMode()">Switch Dark/Light Mode</button>
+  </div>
+
+  <script>
+    function calculateTotal() {
+      const fruit = document.getElementById('fruit');
+      const quantity = parseInt(document.getElementById('quantity').value);
+      const price = parseFloat(fruit.options[fruit.selectedIndex].dataset.price);
+      const total = quantity * price;
+      document.getElementById('total').textContent = `Total: £${total.toFixed(2)}`;
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
